@@ -624,8 +624,8 @@
                             <div class="text-center p-6 rounded-xl" style="background-color: #f0f9ff; border: 2px solid #07A2AD;">
                                 <div class="text-4xl mb-4">📅</div>
                                 <h4 class="text-xl font-bold mb-2" style="color: #07A2AD;">Primeira Mensalidade</h4>
-                                <p class="text-3xl font-bold mb-2" style="color: #07A2AD;">Mês 2</p>
-                                <p class="text-stone-600">Início após implementação</p>
+                                <p class="text-3xl font-bold mb-2" style="color: #07A2AD;">Novembro</p>
+                                <p class="text-stone-600">Até 21 de Novembro 2025</p>
                             </div>
                             <div class="text-center p-6 rounded-xl" style="background-color: #f0f9ff; border: 2px solid #FFB940;">
                                 <div class="text-4xl mb-4">🔄</div>
@@ -672,14 +672,6 @@
                                     <p class="text-sm text-stone-600">66 vidas × R$ 17,81 + R$ 487,50</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Comparativo Visual -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200">
-                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: #FFB940;">Comparativo de Custos Atuais vs Factorial</h3>
-                        <div class="chart-container" style="max-height: 400px;">
-                            <canvas id="comparativeChart"></canvas>
                         </div>
                     </div>
 
@@ -842,42 +834,6 @@
                     }
                 }
             });
-
-            const comparativeCtx = document.getElementById('comparativeChart');
-            if (comparativeCtx) {
-                new Chart(comparativeCtx.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['Recrutei', 'Feedz', 'Icarus', 'Factorial (Unificado)'],
-                        datasets: [{
-                            label: 'Custo Mensal Estimado',
-                            data: [500, 600, 400, 2217.5],
-                            backgroundColor: ['#25253D', '#25253D', '#25253D', '#FF355E'],
-                            borderColor: ['#25253D', '#25253D', '#25253D', '#FF355E'],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            tooltip: {
-                                callbacks: {
-                                    label: (context) => `${context.dataset.label}: ${currencyFormat(context.parsed.y)}`
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    callback: (value) => currencyFormat(value)
-                                }
-                            }
-                        }
-                    }
-                });
-            }
 
             const tabLinks = document.querySelectorAll('[data-tab-target]');
             const tabPanels = document.querySelectorAll('.tab-panel');
