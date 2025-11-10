@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Interativa | Factorial RH & Bidweb</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 45vh;
+            max-height: 450px;
+        }
+        .chart-container-sm {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 350px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 50vh;
+                max-height: 400px;
+            }
+        }
+        .nav-link {
+            @apply px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:bg-stone-200 hover:text-stone-900 transition-colors;
+        }
+        .nav-link.active {
+            @apply text-white hover:text-white;
+            background-color: #FF355E;
+        }
+        .nav-link.active:hover {
+            background-color: #e02e52;
+        }
+        .tab-link {
+            @apply px-4 py-2 text-lg font-medium rounded-t-lg transition-colors duration-200;
+        }
+        .tab-link.active {
+            @apply border-b-4 text-white;
+            border-color: #FF355E;
+            color: #FF355E;
+        }
+        .tab-link:not(.active) {
+            @apply text-stone-500 hover:text-stone-800;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <header class="bg-white backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <h1 class="text-xl font-bold" style="color: #FF355E;">Factorial <span class="text-stone-600">& Bidweb</span></h1>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-4 sm:items-center">
+                    <a href="#resumo" class="nav-link active" data-nav-link>Resumo</a>
+                    <a href="#dores-solucoes" class="nav-link" data-nav-link>Dores & Soluções</a>
+                    <a href="#custos" class="nav-link" data-nav-link>Custos</a>
+                    <a href="#escopo" class="nav-link" data-nav-link>Escopo & Cronograma</a>
+                    <a href="#proximos-passos" class="nav-link" data-nav-link>Próximos Passos</a>
+                </div>
+                <div class="sm:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-stone-500 hover:text-stone-800 hover:bg-stone-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500">
+                        <span class="sr-only">Abrir menu principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#resumo" class="block nav-link active" data-nav-link>Resumo</a>
+                <a href="#dores-solucoes" class="block nav-link" data-nav-link>Dores & Soluções</a>
+                <a href="#custos" class="block nav-link" data-nav-link>Custos</a>
+                <a href="#escopo" class="block nav-link" data-nav-link>Escopo & Cronograma</a>
+                <a href="#proximos-passos" class="block nav-link" data-nav-link>Próximos Passos</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <section id="resumo" class="scroll-mt-20 mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-stone-900 mb-4">Resumo Executivo e Impacto Financeiro</h2>
+            <p class="text-lg text-stone-600 mb-8">
+                Esta é uma proposta para a migração estratégica do sistema de RH da Bidweb para a Factorial. A solução unifica múltiplas plataformas (Recrutei, Feedz, Icarus) em uma única ferramenta integrada, eliminando processos manuais e otimizando a gestão de pessoas.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200 text-center">
+                    <h3 class="text-base font-medium text-stone-500 mb-2">Investimento Mensal (com desconto)</h3>
+                    <p class="text-5xl font-bold" style="color: #FF355E;">R$ 1.664</p>
+                    <p class="text-sm text-stone-600 mt-2">66 colaboradores</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200 text-center">
+                    <h3 class="text-base font-medium text-stone-500 mb-2">Custo por Colaborador</h3>
+                    <p class="text-5xl font-bold" style="color: #07A2AD;">R$ 23,75</p>
+                    <p class="text-sm text-stone-600 mt-2">/ mês / vida (módulos variáveis)</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200 text-center">
+                    <h3 class="text-base font-medium text-stone-500 mb-2">Economia com Black Friday</h3>
+                    <p class="text-5xl font-bold" style="color: #FFB940;">25%</p>
+                    <p class="text-sm text-stone-600 mt-2">+ Implementação Zerada + Factorial One Grátis</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dores-solucoes" class="scroll-mt-20 mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-stone-900 mb-4">Dores e Como Resolvemos</h2>
+            <p class="text-lg text-stone-600 mb-8">
+                Identificamos as principais dores da Bidweb e como a Factorial resolve cada uma delas de forma prática e eficiente.
+            </p>
+
+            <div class="space-y-6">
+                <!-- Dor 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background-color: #FF355E;">1</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-stone-900 mb-3">Múltiplas Plataformas Desconectadas</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4" style="border-color: #FF355E;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Dor:</h4>
+                                    <p class="text-stone-700 text-sm">Uso de três plataformas diferentes: Recrutei (recrutamento), Feedz (desempenho/engajamento) e Icarus (ponto/jornada). Falta de integração entre sistemas, necessidade de exportar/importar dados manualmente e processos fragmentados.</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4" style="border-color: #07A2AD;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Como resolvemos:</h4>
+                                    <ul class="text-stone-700 text-sm space-y-1">
+                                        <li>• Sistema único integrado: recrutamento, admissão, desempenho, ponto, férias e documentos em uma única plataforma</li>
+                                        <li>• Fluxo completo: do recrutamento à admissão digital sem troca de sistemas</li>
+                                        <li>• Dados centralizados: todas as informações do colaborador em um único lugar</li>
+                                        <li>• Eliminação de processos manuais de exportação/importação</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dor 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background-color: #FF355E;">2</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-stone-900 mb-3">Gestão Manual e Complexa de Banco de Horas</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4" style="border-color: #FF355E;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Dor:</h4>
+                                    <p class="text-stone-700 text-sm">Icarus não configura cláusulas específicas da CCT (Convenção Coletiva de Trabalho). Necessidade de cálculos manuais para múltiplas faixas de banco de horas (50%, 60%, 70%, 150%). Separação manual de horas trabalhadas em domingos e feriados. Processo trabalhoso e propenso a erros.</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4" style="border-color: #07A2AD;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Como resolvemos:</h4>
+                                    <ul class="text-stone-700 text-sm space-y-1">
+                                        <li>• Separação automática de horas por tipo de dia (sábado: 1h vira 1h20, domingo/feriado: 1h vira 1h45)</li>
+                                        <li>• Visualização clara de quem trabalhou em domingos e feriados</li>
+                                        <li>• Relatórios detalhados de banco de horas por colaborador</li>
+                                        <li>• Relatórios de períodos aquisitivos e vencimentos</li>
+                                        <li>• Integração com descontos de VT e VA caso o colaborador não justifique a ausência</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dor 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background-color: #FF355E;">3</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-stone-900 mb-3">Relatórios Complexos e Processos Manuais</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4" style="border-color: #FF355E;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Dor:</h4>
+                                    <p class="text-stone-700 text-sm">Feedz tem complexidade excessiva para criação de relatórios. Necessidade de criar planilhas manuais com múltiplas informações (vida do colaborador, salários, benefícios, projeções). Dependência de fórmulas e processos trabalhosos para análises gerenciais.</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4" style="border-color: #07A2AD;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Como resolvemos:</h4>
+                                    <ul class="text-stone-700 text-sm space-y-1">
+                                        <li>• Mais de 60 mil tipos de relatórios disponíveis na biblioteca</li>
+                                        <li>• Criação de relatórios personalizados sem programação (drag-and-drop)</li>
+                                        <li>• IA própria da Factorial para gerar relatórios por conversa</li>
+                                        <li>• Relatórios prontos: turnover, absenteísmo, custos, distribuição por setor</li>
+                                        <li>• API completa para integrações avançadas com time de TI</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dor 4 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background-color: #FF355E;">4</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-stone-900 mb-3">Falta de Interação do Colaborador e Gestores</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4" style="border-color: #FF355E;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Dor:</h4>
+                                    <p class="text-stone-700 text-sm">Feedz requer acesso via plataforma web para responder pesquisas e avaliações, reduzindo aderência. Gestores não têm visão consolidada da equipe. Processo de avaliação e PDI fragmentado, dificultando acompanhamento.</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4" style="border-color: #07A2AD;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Como resolvemos:</h4>
+                                    <ul class="text-stone-700 text-sm space-y-1">
+                                        <li>• Pesquisas e avaliações respondidas pelo celular (aumenta aderência)</li>
+                                        <li>• One-on-One gravado com transcrição automática por IA</li>
+                                        <li>• Feed de engajamento com celebrações, aniversários e reconhecimentos</li>
+                                        <li>• Visão consolidada do gestor: desempenho, PDI, tarefas e objetivos da equipe</li>
+                                        <li>• Feedback rápido entre colaboradores e gestores</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dor 5 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background-color: #FF355E;">5</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-stone-900 mb-3">Onboarding Manual e Processo de Admissão Fragmentado</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4" style="border-color: #FF355E;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Dor:</h4>
+                                    <p class="text-stone-700 text-sm">Processo de onboarding com vídeos e quizzes gerenciado manualmente. Uso de OneDrive para armazenar documentos. Necessidade de criar pastas manualmente e organizar documentos. Processo de admissão desconectado do recrutamento.</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4" style="border-color: #07A2AD;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Como resolvemos:</h4>
+                                    <ul class="text-stone-700 text-sm space-y-1">
+                                        <li>• Admissão digital integrada: do recrutamento direto para o fluxo de onboarding</li>
+                                        <li>• LMS próprio: módulos de vídeo, textos e quizzes estruturados</li>
+                                        <li>• Documentos organizados automaticamente em pastas configuráveis</li>
+                                        <li>• Assinatura eletrônica com validade jurídica</li>
+                                        <li>• Controle de tarefas pendentes e atrasadas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dor 6 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold mr-4" style="background-color: #FF355E;">6</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-stone-900 mb-3">Dificuldade em Importar Dados Históricos</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4" style="border-color: #FF355E;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Dor:</h4>
+                                    <p class="text-stone-700 text-sm">Preocupação com histórico de avaliações de desempenho, PDIs em andamento e dados de recrutamento. Necessidade de manter informações legadas para referência futura.</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4" style="border-color: #07A2AD;">
+                                    <h4 class="font-semibold text-stone-800 mb-2">Como resolvemos:</h4>
+                                    <ul class="text-stone-700 text-sm space-y-1">
+                                        <li>• Criação de pastas de legado para documentos históricos (Feedz, Recrutei)</li>
+                                        <li>• Importação em massa de candidatos via Excel</li>
+                                        <li>• API disponível para time de TI fazer importações avançadas</li>
+                                        <li>• Distribuição automática de documentos em massa</li>
+                                        <li>• Preservação de histórico completo do colaborador</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="custos" class="scroll-mt-20 mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-stone-900 mb-4">Estrutura de Custos da Factorial</h2>
+            <p class="text-lg text-stone-600 mb-8">
+                Nossa precificação é transparente e escalável. Você paga apenas pelo que precisa, com a flexibilidade de ajustar conforme o crescimento da empresa.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                    <h3 class="text-2xl font-bold text-center mb-6">Composição do Custo Mensal</h3>
+                    <div class="chart-container-sm">
+                        <canvas id="priceBreakdownChart"></canvas>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h3 class="text-lg font-medium text-stone-500 mb-2">Custo Total Mensal (com desconto)</h3>
+                        <p class="text-3xl font-bold text-stone-800">R$ 1.664</p>
+                        <p class="text-sm text-stone-600">66 colaboradores</p>
+                    </div>
+                    <div class="text-white p-6 rounded-2xl shadow-lg" style="background-color: #FF355E;">
+                        <h3 class="text-lg font-medium mb-2" style="color: #f0f9ff;">Black Friday</h3>
+                        <p class="text-4xl font-bold">25% OFF</p>
+                        <p class="text-lg font-medium" style="color: #f0f9ff;">+ Implementação Zerada + Factorial One Grátis</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h3 class="text-lg font-medium text-stone-500 mb-2">Modelo Escalável</h3>
+                        <p class="text-xl font-bold text-stone-800">Por Vida</p>
+                        <p class="text-sm text-stone-600">Ajuste conforme crescimento</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                <h3 class="text-xl font-bold mb-4 text-center" style="color: #FF355E;">Detalhamento de Custos</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-stone-50 rounded-lg">
+                            <span class="font-medium text-stone-700">Módulos Variáveis (66 colaboradores)</span>
+                            <span class="font-bold" style="color: #07A2AD;">R$ 1.567,50</span>
+                        </div>
+                        <div class="p-3 bg-stone-50 rounded-lg">
+                            <p class="text-xs text-stone-600 mb-1">Base Factorial + Controle de Ponto + Férias + Canal de Denúncias + Desempenho + Pesquisas + Gestão de Treinamento + Compensation</p>
+                            <p class="text-sm font-medium text-stone-700">R$ 23,75 × 66 colaboradores</p>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-stone-50 rounded-lg">
+                            <span class="font-medium text-stone-700">Recrutamento Enterprise (fixo)</span>
+                            <span class="font-bold" style="color: #07A2AD;">R$ 650,00</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-stone-100 rounded-lg border-2" style="border-color: #FF355E;">
+                            <span class="font-bold text-stone-800">Total sem desconto:</span>
+                            <span class="font-bold text-xl" style="color: #FF355E;">R$ 2.217,50</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-4 rounded-lg" style="background-color: #f0f9ff; border: 2px solid #FF355E;">
+                            <p class="text-sm font-semibold text-stone-800 mb-2">Black Friday - Condições Especiais:</p>
+                            <ul class="text-sm text-stone-600 space-y-1">
+                                <li>• 25% de desconto por 12 meses</li>
+                                <li>• Implementação: R$ 0 (era R$ 3.500)</li>
+                                <li>• Factorial One grátis</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 rounded-lg bg-green-50 border-l-4" style="border-color: #07A2AD;">
+                            <p class="font-semibold text-stone-800 mb-1">Economia com Black Friday:</p>
+                            <p class="text-2xl font-bold" style="color: #07A2AD;">R$ 553,50/mês</p>
+                            <p class="text-sm text-stone-600">+ R$ 3.500 em implementação</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-blue-50 border-l-4" style="border-color: #FFB940;">
+                            <p class="font-semibold text-stone-800 mb-1">Total com desconto:</p>
+                            <p class="text-3xl font-bold" style="color: #FFB940;">R$ 1.664</p>
+                            <p class="text-sm text-stone-600">Primeiro pagamento até 21/11</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="escopo" class="scroll-mt-20 mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-stone-900 mb-4">Escopo & Cronograma de Implementação</h2>
+            <p class="text-lg text-stone-600 mb-8">
+                Esta proposta inclui um conjunto completo de módulos para substituir Recrutei, Feedz e Icarus em uma única plataforma integrada.
+            </p>
+            
+            <div class="border-b border-stone-300 mb-6">
+                <nav class="-mb-px flex space-x-4" aria-label="Tabs">
+                    <button class="tab-link active" data-tab-target="#tab-modulos">Módulos Incluídos</button>
+                    <button class="tab-link" data-tab-target="#tab-detalhado">Descritivo Detalhado</button>
+                    <button class="tab-link" data-tab-target="#tab-pagamentos">Fluxo de Pagamento</button>
+                    <button class="tab-link" data-tab-target="#tab-cronograma">Cronograma Executivo</button>
+                </nav>
+            </div>
+
+            <div id="tab-modulos" class="tab-panel">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h4 class="text-xl font-bold mb-3 text-center" style="color: #FF355E;">Recrutamento Enterprise</h4>
+                        <ul class="space-y-2 text-stone-600">
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Integração com 25+ portais (LinkedIn, InfoJobs, Indeed)</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Página de carreiras personalizável</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Triagem por IA com match automático</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Teste DISC integrado</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Fluxo kanban personalizável</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h4 class="text-xl font-bold mb-3 text-center" style="color: #07A2AD;">Controle de Ponto</h4>
+                        <ul class="space-y-2 text-stone-600">
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Registro de ponto via app</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Separação automática domingo/feriado</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Banco de horas com múltiplas faixas</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Escalas 12x36 e diaristas</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Teste gratuito de 15 dias</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h4 class="text-xl font-bold mb-3 text-center" style="color: #FFB940;">Férias</h4>
+                        <ul class="space-y-2 text-stone-600">
+                            <li class="flex items-start"><span class="mr-2" style="color: #FFB940;">✓</span>Gestão completa de férias</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FFB940;">✓</span>Atestados digitais</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FFB940;">✓</span>Avaliação 45/90 dias automatizada</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FFB940;">✓</span>Calendário consolidado da equipe</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h4 class="text-xl font-bold mb-3 text-center" style="color: #FF355E;">Canal de Denúncias</h4>
+                        <ul class="space-y-2 text-stone-600">
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Denúncias anônimas</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Gestão de casos</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Acompanhamento e resolução</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h4 class="text-xl font-bold mb-3 text-center" style="color: #07A2AD;">Compensation</h4>
+                        <ul class="space-y-2 text-stone-600">
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Gestão de salários</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Benefícios e compensações</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Relatórios financeiros</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h4 class="text-xl font-bold mb-3 text-center" style="color: #FF355E;">Desempenho & Engajamento</h4>
+                        <ul class="space-y-2 text-stone-600">
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Avaliação 180º e 360º</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>One-on-One gravado com IA</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Pesquisas de clima e pulso</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>PDI integrado</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FF355E;">✓</span>Feed de engajamento</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h4 class="text-xl font-bold mb-3 text-center" style="color: #07A2AD;">Treinamentos & LMS</h4>
+                        <ul class="space-y-2 text-stone-600">
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>LMS próprio com módulos</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Vídeos e quizzes integrados</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Onboarding estruturado</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #07A2AD;">✓</span>Acompanhamento de conclusão</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-stone-200">
+                        <h4 class="text-xl font-bold mb-3 text-center" style="color: #FFB940;">Admissão Digital</h4>
+                        <ul class="space-y-2 text-stone-600">
+                            <li class="flex items-start"><span class="mr-2" style="color: #FFB940;">✓</span>Fluxo completo automatizado</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FFB940;">✓</span>Documentos organizados em pastas</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FFB940;">✓</span>Assinatura eletrônica</li>
+                            <li class="flex items-start"><span class="mr-2" style="color: #FFB940;">✓</span>Controle de tarefas pendentes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-detalhado" class="tab-panel hidden">
+                <div class="space-y-8">
+                    <!-- Recrutamento -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200">
+                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: #FF355E;">Recrutamento e Seleção</h3>
+                        <div class="prose max-w-none">
+                            <p class="text-lg text-stone-700 mb-6">
+                                <strong>Sistema completo para substituir a Recrutei:</strong>
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-4">
+                                    <div class="border-l-4 pl-4" style="border-color: #FF355E;">
+                                        <h4 class="font-semibold text-stone-800">Integração com Portais</h4>
+                                        <p class="text-stone-600 text-sm">25+ portais integrados: LinkedIn, InfoJobs, Indeed, Vagas.com e outros principais portais de emprego</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FF355E;">
+                                        <h4 class="font-semibold text-stone-800">Página de Carreiras</h4>
+                                        <p class="text-stone-600 text-sm">Página personalizável com cores e identidade visual da Bidweb, sem necessidade de cadastro prévio para candidatos</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FF355E;">
+                                        <h4 class="font-semibold text-stone-800">Triagem por IA</h4>
+                                        <p class="text-stone-600 text-sm">Match automático entre candidato e vaga, resumo por IA destacando pontos fortes do candidato</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FF355E;">
+                                        <h4 class="font-semibold text-stone-800">Teste DISC</h4>
+                                        <p class="text-stone-600 text-sm">Teste comportamental DISC integrado ao processo seletivo, ilimitado</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="border-l-4 pl-4" style="border-color: #FF355E;">
+                                        <h4 class="font-semibold text-stone-800">Fluxo Kanban</h4>
+                                        <p class="text-stone-600 text-sm">Visualização tipo kanban para acompanhamento de candidatos, integração de gestores no processo</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FF355E;">
+                                        <h4 class="font-semibold text-stone-800">Comunicação Integrada</h4>
+                                        <p class="text-stone-600 text-sm">E-mail interno, integração com Teams para agendamento de entrevistas, WhatsApp Web</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FF355E;">
+                                        <h4 class="font-semibold text-stone-800">Carta Oferta Digital</h4>
+                                        <p class="text-stone-600 text-sm">Carta oferta com assinatura eletrônica, integração direta com admissão digital</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FF355E;">
+                                        <h4 class="font-semibold text-stone-800">Importação de Banco</h4>
+                                        <p class="text-stone-600 text-sm">Importação em massa de candidatos da Recrutei via Excel</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ponto -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200">
+                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: #07A2AD;">Ponto e Jornada de Trabalho</h3>
+                        <div class="prose max-w-none">
+                            <p class="text-lg text-stone-700 mb-6">
+                                <strong>Sistema para substituir o Icarus com melhorias significativas:</strong>
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-4">
+                                    <div class="border-l-4 pl-4" style="border-color: #07A2AD;">
+                                        <h4 class="font-semibold text-stone-800">Registro de Ponto</h4>
+                                        <p class="text-stone-600 text-sm">App móvel para bater ponto, registro via web, suporte para escalas 12x36 e diaristas</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #07A2AD;">
+                                        <h4 class="font-semibold text-stone-800">Separação Automática</h4>
+                                        <p class="text-stone-600 text-sm">Separação automática de horas trabalhadas em domingos e feriados (1h vira 1h45), sábados (1h vira 1h20)</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #07A2AD;">
+                                        <h4 class="font-semibold text-stone-800">Banco de Horas</h4>
+                                        <p class="text-stone-600 text-sm">Gestão de banco de horas com múltiplas faixas, cálculo por colaborador individual, relatórios detalhados</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="border-l-4 pl-4" style="border-color: #07A2AD;">
+                                        <h4 class="font-semibold text-stone-800">Visualização Melhorada</h4>
+                                        <p class="text-stone-600 text-sm">Visualização clara de quem trabalhou em feriados e domingos, facilitando lançamentos manuais quando necessário</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #07A2AD;">
+                                        <h4 class="font-semibold text-stone-800">Teste Gratuito</h4>
+                                        <p class="text-stone-600 text-sm">15 dias de teste gratuito do módulo de ponto para validação antes do compromisso</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #07A2AD;">
+                                        <h4 class="font-semibold text-stone-800">Integração com Férias</h4>
+                                        <p class="text-stone-600 text-sm">Calendário consolidado mostrando férias e banco de horas da equipe para melhor gestão</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desempenho -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200">
+                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: #FFB940;">Desempenho e Engajamento</h3>
+                        <div class="prose max-w-none">
+                            <p class="text-lg text-stone-700 mb-6">
+                                <strong>Sistema completo para substituir o Feedz:</strong>
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-4">
+                                    <div class="border-l-4 pl-4" style="border-color: #FFB940;">
+                                        <h4 class="font-semibold text-stone-800">Avaliação de Desempenho</h4>
+                                        <p class="text-stone-600 text-sm">Avaliações 180º e 360º, personalização completa de perguntas, respostas pelo celular</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FFB940;">
+                                        <h4 class="font-semibold text-stone-800">One-on-One com IA</h4>
+                                        <p class="text-stone-600 text-sm">Reuniões gravadas com transcrição automática por IA, agendamento integrado com Teams</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FFB940;">
+                                        <h4 class="font-semibold text-stone-800">PDI Integrado</h4>
+                                        <p class="text-stone-600 text-sm">Plano de Desenvolvimento Individual integrado, acompanhamento de tarefas e objetivos</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="border-l-4 pl-4" style="border-color: #FFB940;">
+                                        <h4 class="font-semibold text-stone-800">Pesquisas e Pulso</h4>
+                                        <p class="text-stone-600 text-sm">Pesquisas de clima, pulso diário, eNPS, respostas pelo celular para maior aderência</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FFB940;">
+                                        <h4 class="font-semibold text-stone-800">Feed de Engajamento</h4>
+                                        <p class="text-stone-600 text-sm">Celebrações, aniversários automáticos, reconhecimentos, comunidades por eventos</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 pl-4" style="border-color: #FFB940;">
+                                        <h4 class="font-semibold text-stone-800">Visão do Gestor</h4>
+                                        <p class="text-stone-600 text-sm">Dashboard consolidado com desempenho, PDI, tarefas e objetivos de toda a equipe</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-pagamentos" class="tab-panel hidden">
+                <div class="space-y-8">
+                    <!-- Estrutura de Cobrança -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200">
+                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: #FF355E;">Estrutura de Cobrança Factorial</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="text-center p-6 rounded-xl" style="background-color: #f0f9ff; border: 2px solid #FF355E;">
+                                <div class="text-4xl mb-4">💳</div>
+                                <h4 class="text-xl font-bold mb-2" style="color: #FF355E;">Implementação</h4>
+                                <p class="text-3xl font-bold mb-2" style="color: #FF355E;">R$ 0</p>
+                                <p class="text-stone-600">Gratuita com Black Friday</p>
+                            </div>
+                            <div class="text-center p-6 rounded-xl" style="background-color: #f0f9ff; border: 2px solid #07A2AD;">
+                                <div class="text-4xl mb-4">📅</div>
+                                <h4 class="text-xl font-bold mb-2" style="color: #07A2AD;">Primeira Mensalidade</h4>
+                                <p class="text-3xl font-bold mb-2" style="color: #07A2AD;">Mês 2</p>
+                                <p class="text-stone-600">Início após implementação</p>
+                            </div>
+                            <div class="text-center p-6 rounded-xl" style="background-color: #f0f9ff; border: 2px solid #FFB940;">
+                                <div class="text-4xl mb-4">🔄</div>
+                                <h4 class="text-xl font-bold mb-2" style="color: #FFB940;">Modelo Escalável</h4>
+                                <p class="text-3xl font-bold mb-2" style="color: #FFB940;">Por Vida</p>
+                                <p class="text-stone-600">Custo ajustado conforme crescimento</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cronograma de Pagamentos -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200">
+                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: #07A2AD;">Cronograma de Pagamentos</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 rounded-lg" style="background-color: #f0f9ff; border-left: 4px solid #07A2AD;">
+                                <div>
+                                    <h4 class="font-semibold text-stone-800">Até 21 de Novembro 2025</h4>
+                                    <p class="text-sm text-stone-600">Primeiro pagamento (Black Friday)</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xl font-bold" style="color: #07A2AD;">R$ 1.664</p>
+                                    <p class="text-sm text-stone-600">Mensalidade com 25% desconto</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 rounded-lg" style="background-color: #f0f9ff; border-left: 4px solid #FF355E;">
+                                <div>
+                                    <h4 class="font-semibold text-stone-800">Implementação</h4>
+                                    <p class="text-sm text-stone-600">Black Friday: implementação zerada</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xl font-bold" style="color: #FF355E;">R$ 0</p>
+                                    <p class="text-sm text-stone-600">Era R$ 3.500</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 rounded-lg" style="background-color: #f0f9ff; border-left: 4px solid #FFB940;">
+                                <div>
+                                    <h4 class="font-semibold text-stone-800">Dezembro 2025 em diante</h4>
+                                    <p class="text-sm text-stone-600">Mensalidade regular (com desconto 25% por 12 meses)</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xl font-bold" style="color: #FFB940;">R$ 1.664</p>
+                                    <p class="text-sm text-stone-600">66 vidas × R$ 17,81 + R$ 487,50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparativo Visual -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200">
+                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: #FFB940;">Comparativo de Custos Atuais vs Factorial</h3>
+                        <div class="chart-container" style="max-height: 400px;">
+                            <canvas id="comparativeChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Vantagens do Modelo -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200">
+                        <h3 class="text-2xl font-bold mb-6 text-center" style="color: #25253D;">Vantagens do Modelo Factorial</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <span class="mr-3 mt-1" style="color: #FF355E;">✓</span>
+                                    <div>
+                                        <h4 class="font-semibold text-stone-800">Implementação Gratuita</h4>
+                                        <p class="text-stone-600 text-sm">Black Friday: implementação zerada</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="mr-3 mt-1" style="color: #07A2AD;">✓</span>
+                                    <div>
+                                        <h4 class="font-semibold text-stone-800">Desconto Permanente</h4>
+                                        <p class="text-stone-600 text-sm">25% de desconto durante todo o ano</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="mr-3 mt-1" style="color: #FFB940;">✓</span>
+                                    <div>
+                                        <h4 class="font-semibold text-stone-800">Factorial One Grátis</h4>
+                                        <p class="text-stone-600 text-sm">IA própria da Factorial incluída gratuitamente</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <span class="mr-3 mt-1" style="color: #25253D;">✓</span>
+                                    <div>
+                                        <h4 class="font-semibold text-stone-800">Sistema Único</h4>
+                                        <p class="text-stone-600 text-sm">Substitui 3 plataformas em uma só</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="mr-3 mt-1" style="color: #FF355E;">✓</span>
+                                    <div>
+                                        <h4 class="font-semibold text-stone-800">Escalabilidade</h4>
+                                        <p class="text-stone-600 text-sm">Custo por vida, ajusta conforme crescimento</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="mr-3 mt-1" style="color: #07A2AD;">✓</span>
+                                    <div>
+                                        <h4 class="font-semibold text-stone-800">Contrato Flexível</h4>
+                                        <p class="text-stone-600 text-sm">12 meses com possibilidade de ajuste para fidelização</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-cronograma" class="tab-panel hidden">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200">
+                    <ol class="relative border-l border-stone-300">
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-200 rounded-full -left-3 ring-8 ring-white">
+                                <span class="text-teal-700">1</span>
+                            </span>
+                            <h3 class="flex items-center mb-1 text-lg font-semibold text-stone-900">Fechamento do Contrato</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-stone-500">Até 21 de Novembro 2025</time>
+                            <p class="text-base font-normal text-stone-600">Primeiro pagamento de R$ 1.664 aproveitando Black Friday (25% desconto + implementação gratuita). Reunião com diretor financeiro.</p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-200 rounded-full -left-3 ring-8 ring-white">
+                                <span class="text-teal-700">2</span>
+                            </span>
+                            <h3 class="mb-1 text-lg font-semibold text-stone-900">Reunião de Handover</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-stone-500">Até 25 de Novembro 2025</time>
+                            <p class="text-base font-normal text-stone-600">Reunião de transição e alinhamento inicial do projeto. Definição de escopo detalhado e cronograma de implementação.</p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-200 rounded-full -left-3 ring-8 ring-white">
+                                <span class="text-teal-700">3</span>
+                            </span>
+                            <h3 class="mb-1 text-lg font-semibold text-stone-900">1ª Reunião de Implementação</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-stone-500">Até 05 de Dezembro 2025</time>
+                            <p class="text-base font-normal text-stone-600">Início da configuração de módulos, importação de dados históricos (legado Feedz/Recrutei), migração de 66 colaboradores.</p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-200 rounded-full -left-3 ring-8 ring-white">
+                                <span class="text-teal-700">4</span>
+                            </span>
+                            <h3 class="mb-1 text-lg font-semibold text-stone-900">Go-live Completo</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-stone-500">Janeiro 2026</time>
+                            <p class="text-base font-normal text-stone-600">Sistema 100% operacional com todos os módulos ativos. Treinamento completo da equipe. Teste do módulo de ponto (15 dias).</p>
+                        </li>
+                        <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-200 rounded-full -left-3 ring-8 ring-white">
+                                <span class="text-teal-700">5</span>
+                            </span>
+                            <h3 class="mb-1 text-lg font-semibold text-stone-900">Desativação de Sistemas Antigos</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-stone-500">Fevereiro 2026</time>
+                            <p class="text-base font-normal text-stone-600">Após validação completa, desativação gradual de Recrutei, Feedz e Icarus conforme término de contratos.</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="proximos-passos" class="scroll-mt-20">
+            <div class="p-8 rounded-2xl shadow-2xl text-center" style="background-color: #FF355E;">
+                <h2 class="text-3xl font-bold text-white mb-4">Próximos Passos</h2>
+                <p class="text-lg mb-6 max-w-3xl mx-auto" style="color: #f0f9ff;">
+                    Para garantir o desconto especial de Black Friday (25% + implementação gratuita), a aprovação é necessária até <strong>21 de Novembro de 2025</strong>.
+                </p>
+                <div class="bg-white p-6 rounded-xl max-w-xl mx-auto">
+                    <h3 class="text-base font-medium text-stone-500 mb-1">Investimento Mensal (com desconto)</h3>
+                    <p class="text-3xl font-bold" style="color: #FF355E;">R$ 1.664</p>
+                    <p class="text-lg text-stone-700">Solução completa unificando 3 plataformas.</p>
+                    <p class="text-sm text-stone-600 mt-2">Primeiro pagamento até 21/11/2025</p>
+                </div>
+                <div class="mt-6 text-white">
+                    <p class="text-sm mb-2">Pessoas envolvidas no processo:</p>
+                    <p class="text-sm">Victor Henrique (Factorial) • Thuanne (Coordenadora RH) • Sineide (DP) • Lucila (Gestão de Pessoas)</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 mt-12 border-t border-stone-200">
+        <p class="text-sm text-stone-500">Proposta Confidencial | Válida até 21 de Novembro de 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currencyFormat = (val) => val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            const breakdownCtx = document.getElementById('priceBreakdownChart').getContext('2d');
+            new Chart(breakdownCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Módulos Variáveis (66 × R$ 23,75)', 'Recrutamento Enterprise (fixo)'],
+                    datasets: [{
+                        label: 'Custo Mensal',
+                        data: [1567.5, 650],
+                        backgroundColor: ['#FF355E', '#07A2AD'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => `${context.label}: ${currencyFormat(context.parsed)}`
+                            }
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            const comparativeCtx = document.getElementById('comparativeChart');
+            if (comparativeCtx) {
+                new Chart(comparativeCtx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Recrutei', 'Feedz', 'Icarus', 'Factorial (Unificado)'],
+                        datasets: [{
+                            label: 'Custo Mensal Estimado',
+                            data: [500, 600, 400, 2217.5],
+                            backgroundColor: ['#25253D', '#25253D', '#25253D', '#FF355E'],
+                            borderColor: ['#25253D', '#25253D', '#25253D', '#FF355E'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: (context) => `${context.dataset.label}: ${currencyFormat(context.parsed.y)}`
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: (value) => currencyFormat(value)
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const tabLinks = document.querySelectorAll('[data-tab-target]');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const target = document.querySelector(link.dataset.tabTarget);
+                    
+                    tabPanels.forEach(panel => panel.classList.add('hidden'));
+                    target.classList.remove('hidden');
+                    
+                    tabLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+            });
+
+            const navLinks = document.querySelectorAll('[data-nav-link]');
+            const sections = document.querySelectorAll('section');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (mobileMenu.classList.contains('hidden') === false) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
+                    }
+                });
+            });
+
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.4 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
+
